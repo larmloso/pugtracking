@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 mt-3">
+      <h1 class="text-center mt-5">ติดตามพัสดุ</h1>
+
+      <mat-card style="margin-top: 20px;">
+        <div class="example-container">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="row mt-3">
+
+              <div class="col-md-7 col-sm-12">
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label>หมายเขลพัสดุ</mat-label>
+                  <input matInput name="tracking_number" ngModel required #tracking_number="ngModel">
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-4 col-sm-12">
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label>บริษัทข่นส่ง</mat-label>
+                  <mat-select name="courier" ngModel required #courier="ngModel">
+                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                      {{food.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+              <div class="col-md-1 col-sm-12">
+                <button mat-icon-button [disabled]="f.invalid">
+                  <mat-icon>queue</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <mat-card-content>
+
+            <div *ngIf="datas.length" class="text-right mt-4 mb-2">
+              พัสดุจำนวน {{ count }} หมายเลข
+            </div>
+
+            <table class="table table-hover" *ngIf="datas.length">
+              <thead>
+                <tr>
+                  <th scope="col">ที่</th>
+                  <th scope="col">หมายเลขพัสดุ</th>
+                  <th scope="col">บริษัทข่นส่ง</th>
+                  <th scope="col">ลบ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of datas; let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.tracking_number}}</td>
+                  <td>{{item.courier}}</td>
+                  <td>
+                    <button mat-icon-button (click)="deleteItem(item)"><mat-icon color="warn">delete</mat-icon></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+
+          <div class="text-center mt-5">
+            <button
+              mat-raised-button color="primary"
+              [disabled]="!datas.length"
+              (click)="track()">ติดตาม <mat-icon>search</mat-icon></button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>

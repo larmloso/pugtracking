@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-3">
+
+      <h1 class="text-center mt-5">เข้าสู่ระบบ</h1>
+      <mat-card style="margin-top: 20px;">
+        <div class="example-container">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <mat-form-field appearance="legacy" class="example-full-width mt-3">
+              <mat-label>Email</mat-label>
+              <input matInput name="email" ngModel required #email="ngModel">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="example-full-width mt-3">
+              <mat-label>Password</mat-label>
+              <input matInput name="password" ngModel required #password="ngModel">
+            </mat-form-field>
+
+            <div class="text-center mt-5">
+              <button
+              mat-stroked-button
+              color="primary"
+              [disabled]='f.invalid'>เข้าสู่ระบบ <mat-icon>login</mat-icon></button>
+            </div>
+
+          </form>
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>

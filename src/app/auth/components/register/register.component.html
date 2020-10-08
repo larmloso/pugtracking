@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-3">
+      <h1 class="text-center mt-5">สมัครสมาชิก</h1>
+
+      <mat-card style="margin-top: 20px;">
+        <div class="example-container">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <mat-form-field appearance="legacy" class="example-full-width mt-3">
+              <mat-label>Username</mat-label>
+              <input matInput name="username" ngModel required #username="ngModel">
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy" class="example-full-width mt-3">
+              <mat-label>Email</mat-label>
+              <input matInput name="email" ngModel required #email="ngModel">
+            </mat-form-field>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>password</mat-label>
+                    <input matInput name="password" ngModel required #password="ngModel">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>confirmpassword</mat-label>
+                    <input matInput name="confirmpassword" ngModel required #confirmpassword="ngModel">
+                  </mat-form-field>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+              <button
+                mat-stroked-button
+                color="primary"
+                [disabled]='f.invalid'>สมัครสมาชิก <mat-icon>person_add_alt</mat-icon></button>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
