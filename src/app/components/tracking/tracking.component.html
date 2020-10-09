@@ -1,6 +1,10 @@
+<div *ngIf="progressbar">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 mt-3">
+    <div class="col-md-12 offset-md-0 mt-3">
       <h1 class="text-center mt-5">ติดตามพัสดุ</h1>
 
       <mat-card style="margin-top: 20px;">
@@ -41,14 +45,14 @@
             </div>
 
             <table class="table table-hover" *ngIf="datas.length">
-              <thead>
+              <!-- <thead>
                 <tr>
                   <th scope="col">ที่</th>
                   <th scope="col">หมายเลขพัสดุ</th>
                   <th scope="col">บริษัทข่นส่ง</th>
                   <th scope="col">ลบ</th>
                 </tr>
-              </thead>
+              </thead> -->
               <tbody>
                 <tr *ngFor="let item of datas; let i=index">
                   <th scope="row">{{i+1}}</th>
@@ -69,9 +73,13 @@
               (click)="track()">ติดตาม <mat-icon>search</mat-icon></button>
           </div>
         </div>
+
       </mat-card>
     </div>
 
+
   </div>
+  <app-tracking-details></app-tracking-details>
+
 
 </div>

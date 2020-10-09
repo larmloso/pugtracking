@@ -1,1 +1,89 @@
-<p>tracking-details works!</p>
+<!-- <div *ngIf="datadetailService.historys">
+
+  <h4 class="mt-5"> ประวัติการติดตามพัสดุ </h4>
+  <div class="row">
+    <div *ngFor="let item of datadetailService.historys" class="col-md-3">
+      <div class="card">
+        <div class="card-body text-center">
+          {{ item.trackingNo }}
+          {{ item.courier }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div *ngIf="datadetailService.trackingData">
+
+  <div class="mt-3">
+    <div class="row">
+      <div class="container mt-5 mb-5">
+
+        <div *ngFor="let item of datadetailService.trackingData; let i=index" class="col-md-12">
+          <div *ngIf="item.meta.code === (200); else elseBlock">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{item.data.courier}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    เลขพัสดุ : {{item.data.trackingNo}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="text-center mt-3">
+                  <h4>{{item.data.courier}}</h4>
+                  <h5>เลขพัสดุ : {{item.data.trackingNo}}</h5>
+                  <h5>ชื่อผู้รับ : {{item.data.detail.recipient}}</h5>
+                </div>
+
+                <div *ngFor="let timelines of item.data.timelines">
+
+                  <h5 class="mt-3">{{ timelines.date}}</h5>
+                  <ul class="timeline mb-5">
+
+                    <li class="mb-3" *ngFor="let detail of timelines.details">
+                      <h5>{{detail.time}}</h5>
+                      <h6>รายละเอียด :</h6>
+                      <p>
+                      <h6>{{detail.description}}</h6>
+
+                    </li>
+
+                  </ul>
+                </div>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+
+          </div>
+          <ng-template #elseBlock>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <span color="warn">ไม่พบข้อมูล</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    เลขพัสดุ : {{item.data.trackingNo}} บริษัทข่นส่ง: {{item.data.courierkey}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="text-center mt-3">
+                  <h4>เลขพัสดุ : {{item.data.trackingNo}}</h4>
+                  <h4>บริษัทข่นส่ง: {{item.data.courierkey}}</h4>
+                  <h5>** โปรดตรวจสอบเลขพัสดุ และบริษัทข่นส่ง ให้ถูกต้อง **</h5>
+                </div>
+
+              </mat-expansion-panel>
+            </mat-accordion>
+          </ng-template>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

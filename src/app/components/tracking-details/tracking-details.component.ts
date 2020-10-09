@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatadetailsService } from 'src/app/shared/services/datadetails.service'
 
 @Component({
   selector: 'app-tracking-details',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackingDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public datadetailService: DatadetailsService) {
+  }
 
   ngOnInit(): void {
   }
+
+
+
 
 }
