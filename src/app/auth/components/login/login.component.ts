@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
         console.log('User logged')
         this.progressbar = false;
         this.alertService.success('เข้าสู่ระบบ');
+        window.location.href="/track"
+
 
       },
       error: err => {

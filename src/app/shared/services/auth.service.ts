@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   authUrl = "http://localhost:5000/pug-demo-v1/us-central1/api/auth";
-  confirmEmailUrl = "http://localhost:4200/confirm-email";
+  editprofileUrl = "http://localhost:5000/pug-demo-v1/us-central1/api/auth/editprofile";
   trackUrl = "http://localhost:5000/pug-demo-v1/us-central1/api/find";
 
   helper = new JwtHelperService();
@@ -42,15 +42,30 @@ export class AuthService {
     return !this.helper.isTokenExpired(token);
   }
 
+  loggedIn2(){
+    const token = localStorage.getItem('token')
+    return !this.helper.isTokenExpired(token);
+  }
+
   register(model: any){
     return this.http.post(this.authUrl+'/register' , model).pipe(
       map((response: any) => {
-        const user = response;
-        console.log(user)
         this._router.navigateByUrl('login');
 
       })
     )
+  }
+
+  editprofile(model: any){
+
+    return this.http.post(this.editprofileUrl, model).pipe(
+      map((response: any) => {
+        const user = response;
+        localStorage.setItem('username', user.username);
+
+      })
+    )
+
   }
 
 

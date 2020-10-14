@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h1>การแจ้งเตือนใหม่</h1>
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-1">
+      <div *ngFor="let item of notificationService.notidata">
+
+        <div class="alert alert-success" role="alert">
+          <button class="close" (click)="del(item)"><mat-icon color="primary">clear</mat-icon></button>
+
+          <h4 class="alert-heading">{{item.details.time}}</h4>
+          <p>{{item.details.description}}</p>
+          <hr>
+          <p class="mb-0">{{item.user_data.trackingNo}} {{item.user_data.courier}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h1>การแจ้งเตือนก่อนหน้านี้</h1>
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-1">
+      <div *ngFor="let item of notificationService._notidata">
+
+        <div class="alert alert-warning" role="alert">
+          <button class="close" (click)="del(item)"><mat-icon color="primary">clear</mat-icon></button>
+
+          <h4 class="alert-heading">{{item.details.time}}</h4>
+          <p>{{item.details.description}}</p>
+          <hr>
+          <p class="mb-0">{{item.user_data.trackingNo}} {{item.user_data.courier}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+
+  </div>
+
+</div>
+

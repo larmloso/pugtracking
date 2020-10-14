@@ -11,6 +11,8 @@ import { flatMap } from 'rxjs/operators';
 })
 export class RegisterComponent implements OnInit {
 
+  hide = true;
+
   progressbar = false;
   constructor(private authService: AuthService,
     private alertService: AlertService) { }

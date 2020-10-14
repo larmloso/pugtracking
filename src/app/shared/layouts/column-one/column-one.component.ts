@@ -11,5 +11,6 @@ export class ColumnOneComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  progressbar = false;
 
 }

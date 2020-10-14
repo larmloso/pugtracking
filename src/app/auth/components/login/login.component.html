@@ -12,12 +12,12 @@
           <form #f="ngForm" (ngSubmit)="onSubmit(f)">
             <mat-form-field appearance="legacy" class="example-full-width mt-3">
               <mat-label>Email</mat-label>
-              <input matInput name="email" ngModel required #email="ngModel">
+              <input matInput type='email' name="email" ngModel required #email="ngModel">
             </mat-form-field>
 
             <mat-form-field appearance="legacy" class="example-full-width mt-3">
               <mat-label>Password</mat-label>
-              <input matInput name="password" ngModel required #password="ngModel">
+              <input matInput type='password' name="password" ngModel required #password="ngModel">
             </mat-form-field>
 
             <div class="text-center mt-5">

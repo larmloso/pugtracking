@@ -91,7 +91,6 @@ export class TrackingComponent implements OnInit {
   }
 
   async track() {
-    console.log(this.datas);
     this.progressbar = true;
 
     let respon = await this.http.post(this.trackUrl, this.newTrack).toPromise()

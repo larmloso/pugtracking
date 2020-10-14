@@ -1,36 +1,42 @@
-<div *ngIf="progressbar">
-  <mat-progress-bar mode="query"></mat-progress-bar>
-</div>
 <ngx-alerts></ngx-alerts>
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
 
-    <button mat-button routerLink="/" matTooltip="Home"><mat-icon>dashboard</mat-icon> pugTracking </button>
+    <button mat-button routerLink="/" matTooltip="Home">
+      <mat-icon>dashboard</mat-icon> pugTracking
+    </button>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <button mat-button routerLink="/track" matTooltip="ติดตามพัสดุ">ติดตามพัสดุ <mat-icon color="accent">search</mat-icon></button>
+        <button mat-button routerLink="/track" matTooltip="ติดตามพัสดุ">ติดตามพัสดุ <mat-icon color="accent">search
+          </mat-icon></button>
 
         <div *ngIf="!authService.loggedIn()">
-          <button mat-raised-button routerLink="/register" matTooltip="สมัครสมาชิก">สมัครสมาชิก <mat-icon color="primary">person_add_alt</mat-icon></button>
-          <button mat-button routerLink="/login" matTooltip="เข้าสู่ระบบ">เข้าสู่ระบบ <mat-icon color="warn">login</mat-icon></button>
+          <button mat-raised-button routerLink="/register" matTooltip="สมัครสมาชิก">สมัครสมาชิก <mat-icon
+              color="primary">person_add_alt</mat-icon></button>
+          <button mat-button routerLink="/login" matTooltip="เข้าสู่ระบบ">เข้าสู่ระบบ <mat-icon color="warn">login
+            </mat-icon></button>
         </div>
 
         <div *ngIf="authService.loggedIn()">
-        <button mat-button routerLink="/track" color="primary" matTooltip="{{ authService.username }}">{{ authService.username }} <mat-icon>person_outline</mat-icon></button>
-        <button mat-raised-button (click)="logout()" matTooltip="ออกจากระบบ">ออกจากระบบ <mat-icon color="warn">logout</mat-icon></button>
-        <button mat-icon-button matTooltip="การแจ้งเตือน" [matMenuTriggerFor]="menu"><mat-icon color="basic" [matBadge]="noti" matBadgeColor="warn">notifications_none</mat-icon></button>
+          <button mat-button routerLink="/track" color="primary" routerLink='/member'
+            matTooltip="{{ authService.username }}">{{ authService.username }} <mat-icon>person_outline</mat-icon>
+          </button>
+          <button mat-raised-button (click)="logout()" matTooltip="ออกจากระบบ">ออกจากระบบ <mat-icon color="warn">logout
+            </mat-icon></button>
+
+          <button mat-icon-button matTooltip="การแจ้งเตือน" routerLink='/notification'>
+            <mat-icon color="basic"
+              [matBadge]="[notificationService.countnoti] > 0 ? [notificationService.countnoti] : null"
+              matBadgeColor="warn">notifications_none
+            </mat-icon>
+          </button>
         </div>
 
-        <mat-menu #menu="matMenu" class="mt-2">
-          <button mat-menu-item>
-            <mat-icon>sms</mat-icon>
-            <span>พัสดุถึง ...</span>
-          </button>
-        </mat-menu>
+
 
       </div>
     </div>

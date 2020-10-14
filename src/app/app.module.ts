@@ -14,12 +14,20 @@ import { HomeComponent } from './components/home/home.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { TrackingDetailsComponent } from './components/tracking-details/tracking-details.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NotificationComponent } from './components/notification/notification.component';
+import { MemberComponent } from './components/member/member.component';
+const config: SocketIoConfig = { url: 'http://localhost:4000', options: {} };
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TrackingComponent,
-    TrackingDetailsComponent
+    TrackingDetailsComponent,
+    NotificationComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +39,7 @@ import { TrackingDetailsComponent } from './components/tracking-details/tracking
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(config)
 
 
   ],
